@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthResult } from 'src/app/model/auth-result';
+import { User } from 'src/app/model/user';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +16,21 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
   
-  constructor() {}
+  constructor(public apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
   }
 
-  public register() {
-    console.log(this.formGroup.valid)
-    if (this.formGroup.valid) {
-      const user = this.formGroup.value;
-      console.log(user);
-      // Aquí puedes agregar la lógica para enviar los datos del registro al servidor
+  public login() {
+    if (!this.formGroup.valid) {
+      return;
     }
-  }
 
+    const user: User = this.formGroup.getRawValue();
+    this.apiService.login(user).subscribe(({ token }: AuthResult) => {
+      localStorage.setItem('auth_token', token)
+      console.log("token", token);
+    })
+    this.router.navigate(['/main'])
+  }
 }

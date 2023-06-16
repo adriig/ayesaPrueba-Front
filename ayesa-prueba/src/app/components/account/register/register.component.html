@@ -1,34 +1,3 @@
-<!-- <h2>Registro</h2>
-<form (ngSubmit)="onSubmit()">
-  <div>
-    <label>Nombre de usuario:</label>
-    <input type="text" [(ngModel)]="username" name="username" required>
-  </div>
-  <div>
-    <label>Contraseña:</label>
-    <input type="password" [(ngModel)]="password" name="password" required>
-  </div>
-  <button type="submit">Registrarse</button>
-</form> -->
-
-<!-- <form [formGroup]="formGroup">
-    <label for="username">Username</label>
-    <input type="text" formControlName="username">
-    <div *ngIf="formGroup.get('username')?.invalid && formGroup.get('username')?.touched">
-      <div *ngIf="formGroup.get('username')?.hasError('required')">Username is required.</div>
-    </div>
-  
-    <label for="password">Password</label>
-    <input type="password" formControlName="password">
-    <div *ngIf="formGroup.get('password')?.invalid && formGroup.get('password')?.touched">
-      <div *ngIf="formGroup.get('password')?.hasError('required')">Password is required.</div>
-      <div *ngIf="formGroup.get('password')?.hasError('minlength')">Password should have at least 8 characters.</div>
-    </div>
-  
-    <button (click)="register()" [disabled]="formGroup.invalid">Registrarse</button>
-  </form> -->
-  
-  
 
   <form [formGroup]="formGroup">
     <label for="chk" aria-hidden="true">Register</label>
@@ -45,17 +14,3 @@
   
     <button (click)="register()" [disabled]="formGroup.invalid">register</button>
   </form>
-  
-  
-  
-
-  
-  
-
-<!-- <form [formGroup]="formGroup">
-    <label for="chk" aria-hidden="true">Register</label>
-    <input type="text" formControlName="username" placeholder="username">
-    <input type="password" formControlName="password" placeholder="password">
-    <button (click)="register()" [disabled]="formGroup.invalid">Registrarse</button>
-  </form>
-   -->
