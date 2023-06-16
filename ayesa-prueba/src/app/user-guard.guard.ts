@@ -15,6 +15,7 @@ export class UserGuardGuard implements CanActivate {
     const token = localStorage.getItem('auth_token')
     if(!token) {
       this.router.navigate(['/'])
+      return false
     }
     return true
   }

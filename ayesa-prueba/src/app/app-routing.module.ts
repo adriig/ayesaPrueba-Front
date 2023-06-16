@@ -6,7 +6,8 @@ import { UserGuardGuard } from './user-guard.guard';
 
 
 const routes: Routes = [
-  {path: '', component: FormComponent},
+  {path: '', redirectTo: '/auth', pathMatch: 'full'},
+  {path: 'auth', component: FormComponent},
   {path: 'main', component: MainComponent, canActivate: [UserGuardGuard]}
 ];
 
