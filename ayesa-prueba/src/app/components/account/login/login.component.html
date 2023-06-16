@@ -1,0 +1,28 @@
+<!-- <form (ngSubmit)="onSubmit()">
+  <div>
+    <label>Nombre de usuario:</label>
+    <input type="text" [(ngModel)]="username" name="username" required>
+  </div>
+  <div>
+    <label>Contraseña:</label>
+    <input type="password" [(ngModel)]="password" name="password" required>
+  </div>
+  <br>
+  <button type="submit">Iniciar sesión</button>
+</form> -->
+
+<form [formGroup]="formGroup">
+    <label for="chk" aria-hidden="true">Log in</label>
+    <input type="text" formControlName="username" placeholder="Username">
+    <div *ngIf="formGroup.get('username')?.invalid && formGroup.get('username')?.touched" class="error-message">
+      <p *ngIf="formGroup.get('username')?.hasError('required')">Username is required.</p>
+    </div>
+  
+    <input type="password" formControlName="password" placeholder="Password">
+    <div *ngIf="formGroup.get('password')?.invalid && formGroup.get('password')?.touched" class="error-message">
+      <p *ngIf="formGroup.get('password')?.hasError('required')">Password is required.</p>
+      <p *ngIf="formGroup.get('password')?.hasError('minlength')">Password should have at least 8 characters.</p>
+    </div>
+  
+    <button (click)="register()" [disabled]="formGroup.invalid">Log In</button>
+  </form>
